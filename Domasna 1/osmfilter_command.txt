@@ -1,0 +1,1 @@
+osmfilter macedonia-latest.osm --keep="amenity=hospital" | osmconvert - --all-to-nodes --csv="@id @lat @lon name" -o="hospitals.txt"
