@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/GitHubRepository.iml" filepath="$PROJECT_DIR$/.idea/GitHubRepository.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Domasna 1/data/data.iml" filepath="$PROJECT_DIR$/Domasna 1/data/data.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Domasna 2/tech prototype/backend/hospiproject/hospiproject.iml" filepath="$PROJECT_DIR$/Domasna 2/tech prototype/backend/hospiproject/hospiproject.iml" />
+    </modules>
+  </component>
+</project>
