@@ -37,13 +37,13 @@ public class HospitalController {
     }
     @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/user/location")
-    public ResponseEntity<GeoIP> getUserLocation(@RequestParam(value="ipAddress", required=true) String ipAddress) throws IOException, GeoIp2Exception {
+    public ResponseEntity<GeoIP> getUserLocation(@RequestParam(value="ipAddress") Object ipAddress) throws IOException, GeoIp2Exception {
 
         String dbLocation = "./GeoLite2-City.mmdb";
         File locationsDatabase = new File(dbLocation);
         DatabaseReader dbReader = new DatabaseReader.Builder(locationsDatabase)
                 .build();
-        InetAddress ip = InetAddress.getByName(ipAddress);
+        InetAddress ip = InetAddress.getByName((String)ipAddress);
         CityResponse cityResponse = dbReader.city(ip);
         String latitude = cityResponse.getLocation().getLatitude().toString();
         String longitude = cityResponse.getLocation().getLongitude().toString();

@@ -17,11 +17,27 @@ export class MapComponent implements OnInit {
   public hospitalNames: any[] = [];
   public currentName: any;
   public showName: boolean = false;
+  public ipAdress: any;
   constructor(private http: HttpClient) {
   }
 
   ngOnInit(): void {
     this.getMethod();
+    this.http.get("https://api.ipify.org?format=json").subscribe((data) => {
+      this.ipAdress = data;
+      console.log(this.ipAdress.ip)
+      this.http.get(`http://localhost:8080/user/location?ipAddress=${this.ipAdress.ip}`).subscribe((data) => {
+        let key1 = 'latitude'
+        let key2 = 'longitude'
+       
+        this.lat = Number(data[key1 as keyof typeof data])
+        this.lon = Number(data[key2 as keyof typeof data])
+       
+
+      })
+    })
+    
+   
   }
 
   public getMethod() {

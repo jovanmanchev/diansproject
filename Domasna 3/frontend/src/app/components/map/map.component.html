@@ -1078,8 +1078,9 @@
 
       <div class="section-title">
         <p>Најблиските болници се прикажани подоле</p>
+       
       </div>
-        <agm-map [latitude]="lat" [longitude]="lon">
+        <agm-map [latitude]="lat" [longitude]="lon" [zoom]="15" >
          
       
           <agm-marker  *ngFor="let i of agmMarkers"   (markerClick) = "showInfo(i.index)"  [longitude]="i.lon" [latitude]="i.lat">
@@ -1366,16 +1367,14 @@
         }
       }
     });
-
+   
     /**
      * Initiate Pure Counter
      */
     new PureCounter();
 
   })()
-  document.onload(function () {
-    console.log("asds")
-  })
+
   
   </script>
 
