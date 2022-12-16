@@ -1082,7 +1082,7 @@
         <agm-map [latitude]="lat" [longitude]="lon">
          
       
-          <agm-marker  *ngFor="let i of agmMarkers"   (markerClick) = "showInfo(i.index)"  [longitude]="i.lat" [latitude]="i.lon">
+          <agm-marker  *ngFor="let i of agmMarkers"   (markerClick) = "showInfo(i.index)"  [longitude]="i.lon" [latitude]="i.lat">
           </agm-marker>
          
             
