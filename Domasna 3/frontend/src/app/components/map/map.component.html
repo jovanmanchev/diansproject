@@ -1085,10 +1085,14 @@
       
           <agm-marker  *ngFor="let i of agmMarkers"   (markerClick) = "showInfo(i.index)"  [longitude]="i.lon" [latitude]="i.lat">
           </agm-marker>
-         
-            
+          <agm-marker  [longitude]="lon" [latitude]="lat" [iconUrl] = "{
+            url: '../../../assets/img/marker.png'
+           
+          }"> 
+          </agm-marker>
         
         </agm-map>
+        
     </div>
     <div class = 'map-info' *ngIf="showName">
       <p>{{currentName ? currentName : "Не е достапно името во моментот"}}</p>
