@@ -1037,6 +1037,14 @@
     iframe {
       zoom: 2.5;
     }
+    .map-info{
+   
+      width: 600px;
+      height: 100px;
+      margin: 10px;
+      padding: 5px;
+      background-color: lightgray;
+    }
 
 
   </style>
@@ -1073,13 +1081,16 @@
       </div>
         <agm-map [latitude]="lat" [longitude]="lon">
          
-            
-          <agm-marker *ngFor="let i of agmMarkers"   [longitude]="i.lat" [latitude]="i.lon">
-            </agm-marker>>
-            
+      
+          <agm-marker  *ngFor="let i of agmMarkers"   (markerClick) = "showInfo(i.index)"  [longitude]="i.lat" [latitude]="i.lon">
+          </agm-marker>
          
+            
         
-        </agm-map>>
+        </agm-map>
+    </div>
+    <div class = 'map-info' *ngIf="showName">
+      <p>{{currentName ? currentName : "Не е достапно името во моментот"}}</p>
     </div>
   </section>
 
