@@ -27,9 +27,9 @@ public class Hospital {
     public static Hospital createHospital(String line){
         String [] parts = line.split("\t");
         if(parts.length == 3)
-            return new Hospital(Long.valueOf(parts[0]), Double.valueOf(parts[1]), Double.valueOf(parts[2]));
+            return new Hospital(Long.valueOf(parts[0]), Double.valueOf(parts[2]), Double.valueOf(parts[1]));
 
-        return new Hospital(Long.valueOf(parts[0]), Double.valueOf(parts[1]), Double.valueOf(parts[2]), parts[3]);
+        return new Hospital(Long.valueOf(parts[0]), Double.valueOf(parts[2]), Double.valueOf(parts[1]), parts[3]);
     }
 
     public Long getHospitalId() {
