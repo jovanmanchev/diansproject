@@ -1078,16 +1078,21 @@
 
       <div class="section-title">
         <p>Најблиските болници се прикажани подоле</p>
+       
       </div>
-        <agm-map [latitude]="lat" [longitude]="lon">
+        <agm-map [latitude]="lat" [longitude]="lon" [zoom]="15" >
          
       
           <agm-marker  *ngFor="let i of agmMarkers"   (markerClick) = "showInfo(i.index)"  [longitude]="i.lon" [latitude]="i.lat">
           </agm-marker>
-         
-            
+          <agm-marker  [longitude]="lon" [latitude]="lat" [iconUrl] = "{
+            url: '../../../assets/img/marker.png'
+           
+          }"> 
+          </agm-marker>
         
         </agm-map>
+        
     </div>
     <div class = 'map-info' *ngIf="showName">
       <p>{{currentName ? currentName : "Не е достапно името во моментот"}}</p>
@@ -1149,6 +1154,9 @@
 <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
         integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
         crossorigin=""></script>
+  <script src
+        ="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+   </script>
 <!-- Template Main JS File -->
 <script>
 
@@ -1363,13 +1371,16 @@
         }
       }
     });
-
+   
     /**
      * Initiate Pure Counter
      */
     new PureCounter();
 
-  })()</script>
+  })()
+
+  
+  </script>
 
 </body>
 
