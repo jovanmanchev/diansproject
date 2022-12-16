@@ -11,13 +11,16 @@ import {HttpClient} from "@angular/common/http";
 export class MapComponent implements OnInit {
 
   public dataObj: any;
-  lat : number = 41.608635;
-  lon: number = 21.745275;
+  public lat : any;
+  public lon: any;
   public agmMarkers: agmmarker[] = [];
   public hospitalNames: any[] = [];
   public currentName: any;
   public showName: boolean = false;
   public ipAdress: any;
+  public origin: any;
+  public destination: any;
+  public showRoute: boolean = false
   constructor(private http: HttpClient) {
   }
 
@@ -30,10 +33,9 @@ export class MapComponent implements OnInit {
         let key1 = 'latitude'
         let key2 = 'longitude'
        
-        this.lat = Number(data[key1 as keyof typeof data])
+        this.lat = Number(data[key1 as keyof typeof data]) + 0.001
         this.lon = Number(data[key2 as keyof typeof data])
        
-
       })
     })
     
@@ -68,7 +70,11 @@ export class MapComponent implements OnInit {
     let hospitalName = this.hospitalNames[index]
     this.currentName = hospitalName
     this.showName = true;
-   
+    
+    this.origin = {lat: this.lat, lng: this.lon}
+    this.destination = {lat: this.agmMarkers[index].lat, lng: this.agmMarkers[index].lon}
+    this.showRoute = true
+    console.log(this.destination)
   }
 }
 
