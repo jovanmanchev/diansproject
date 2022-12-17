@@ -1087,12 +1087,15 @@
           </agm-marker>
           <agm-marker  [longitude]="lon" [latitude]="lat" [label] = "{text: 'вие сте овде', color: 'lightblue'}"> 
           </agm-marker>
-          
-          <agm-direction *ngIf = "showRoute"
-          [origin]="origin" 
-          [destination]="destination"
-        >
-        </agm-direction>
+          <agm-polyline *ngIf="showRoute" [strokeWeight]="3" [strokeColor]="'#07b57a'">
+              <agm-polyline-point [latitude] = "origin.lat" [longitude]="origin.lng">
+
+              </agm-polyline-point>
+              <agm-polyline-point [latitude] = "destination.lat" [longitude]="destination.lng">
+
+              </agm-polyline-point>>
+          </agm-polyline>
+         
         </agm-map>
         
     </div>
