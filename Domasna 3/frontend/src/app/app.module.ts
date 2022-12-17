@@ -19,7 +19,7 @@ import { AgmDirectionModule  } from 'agm-direction';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    AgmDirectionModule,
+    AgmDirectionModule  ,
     AgmCoreModule.forRoot({
       apiKey: ''
     }),
