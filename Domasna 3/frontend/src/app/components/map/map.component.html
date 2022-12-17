@@ -1085,12 +1085,16 @@
       
           <agm-marker  *ngFor="let i of agmMarkers"   (markerClick) = "showInfo(i.index)"  [longitude]="i.lon" [latitude]="i.lat">
           </agm-marker>
-          <agm-marker  [longitude]="lon" [latitude]="lat" [iconUrl] = "{
-            url: '../../../assets/img/marker.png'
-           
-          }"> 
+          <agm-marker  [longitude]="lon" [latitude]="lat" [label] = "{text: 'вие сте овде', color: 'lightblue'}"> 
           </agm-marker>
-        
+          <agm-polyline *ngIf="showRoute" [strokeWeight]="3" [strokeColor]="'#07b57a'">
+              <agm-polyline-point [latitude] = "origin.lat" [longitude]="origin.lng">
+
+              </agm-polyline-point>
+              <agm-polyline-point [latitude] = "destination.lat" [longitude]="destination.lng">
+
+              </agm-polyline-point>>
+          </agm-polyline>
         </agm-map>
         
     </div>
