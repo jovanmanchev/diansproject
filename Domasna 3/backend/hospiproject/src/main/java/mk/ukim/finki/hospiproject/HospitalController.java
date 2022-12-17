@@ -43,8 +43,10 @@ public class HospitalController {
         File locationsDatabase = new File(dbLocation);
         DatabaseReader dbReader = new DatabaseReader.Builder(locationsDatabase)
                 .build();
+
         InetAddress ip = InetAddress.getByName((String)ipAddress);
         CityResponse cityResponse = dbReader.city(ip);
+
         String latitude = cityResponse.getLocation().getLatitude().toString();
         String longitude = cityResponse.getLocation().getLongitude().toString();
 
