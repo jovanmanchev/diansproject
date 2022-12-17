@@ -46,7 +46,7 @@ public class HospitalController {
 
         InetAddress ip = InetAddress.getByName((String)ipAddress);
         CityResponse cityResponse = dbReader.city(ip);
-     
+
         String latitude = cityResponse.getLocation().getLatitude().toString();
         String longitude = cityResponse.getLocation().getLongitude().toString();
 
