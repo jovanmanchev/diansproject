@@ -8,12 +8,14 @@ import {MapComponent} from './components/map/map.component';
 import {HttpHeaders, HttpClient, HttpClientModule} from "@angular/common/http";
 import { AgmCoreModule } from '@agm/core';
 import { AgmDirectionModule  } from 'agm-direction';
+import { LoginComponent } from './login/login.component';
 //AIzaSyBs_734czgjKtdGAdankJONkoA613Wdygw
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     MapComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
