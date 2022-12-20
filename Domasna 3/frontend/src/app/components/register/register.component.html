@@ -9,43 +9,47 @@
 
 <style>
 
-  form {
-    margin-left: 35%;
-    margin-top: 5%;
-    width: 400px;
+    form {
+        margin-left: 35%;
+        margin-top: 5%;
+        width: 400px;
 
-  }
-  .link{
-    display: inline-block;
-    width: 70px;
-  }
-  #prv{
-    margin-right: 5px;
-    margin-top: 10px;
-  }
+    }
+    .link{
+        display: inline-block;
+        width: 70px;
+    }
+    #prv{
+        margin-right: 5px;
+        margin-top: 10px;
+    }
+
 </style>
 
-<form th:method="POST" th:action="@{/register}">
-  <h1>Register</h1>
-  <!-- Email input -->
-  <div class="form-outline mb-4">
-    <label class="form-label" for="username">Email address</label>
-    <input type="text" id="username" name="username" class="form-control"/>
-  </div>
+<form #userRegister="ngForm" (ngSubmit)="onRegister(userRegister)">
+    <h1>Register</h1>
+    <!-- Email input -->
+    <div class="form-outline mb-4">
+        <label class="form-label" for="username">Username</label>
+        <input id="username" name="username" class="form-control" ngModel/>
+    </div>
 
-  <!-- Password input -->
-  <div class="form-outline mb-4">
-    <label class="form-label" for="password">Password</label>
-    <input type="password" id="password" name="password" class="form-control"/>
-  </div>
-  <div class="form-outline mb-4">
-    <label class="form-label" for="confirm">Confirm Password</label>
-    <input type="password" id="confirm" name="confirmPassword" class="form-control"/>
-  </div>
-  <div class="link" id="prv">
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </div>
-  <div class="link">
-    <a routerLink="/login">Login</a>
-  </div>
+    <!-- Password input -->
+    <div class="form-outline mb-4">
+        <label class="form-label" for="password">Password</label>
+        <input type="password" id="password" name="password" class="form-control" ngModel/>
+    </div>
+
+    <div class="form-outline mb-4">
+        <label class="form-label" for="confirmPassword">Confirm Password</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" ngModel/>
+    </div>
+
+    <!-- Submit button -->
+    <div class="link" id="prv">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+    <div class="link">
+        <a routerLink="/login">Login</a>
+    </div>
 </form>

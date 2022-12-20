@@ -1,10 +1,9 @@
 package mk.ukim.finki.hospiproject;
 
+import mk.ukim.finki.hospiproject.repository.dataholder.Message;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.*;
@@ -13,36 +12,31 @@ import java.io.*;
 @RequestMapping("/register")
 public class RegisterController {
 
-    @CrossOrigin(origins = "http://localhost:4200")
-    @GetMapping
-    public String getLoginPage() {
-        return "register-page";
-    }
-
 
     @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping
-    public String login(HttpServletRequest request) throws IOException {
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        String confirm = request.getParameter("confirmPassword");
-        if (username.isEmpty() || username == null || password.isEmpty() || password == null) {
-            return "redirect:/register";
+    public ResponseEntity<Message> register(@RequestParam String username, @RequestParam String password, @RequestParam String confirmPassword) throws IOException {
+
+        if (username.isEmpty() || username == null || password.isEmpty() || password == null || confirmPassword.isEmpty() || confirmPassword == null) {
+            return ResponseEntity.ok().body(new Message("ALL INPUTS ARE REQUIRED"));
         }
 
+        if (!password.equals(confirmPassword)) {
+            return ResponseEntity.ok().body(new Message("PASSWORDS DO NOT MATCH"));
+        }
 
         FileReader fileReader = new FileReader("./users.txt");
         BufferedReader bufferedReader = new BufferedReader(fileReader);
         String s = bufferedReader.readLine();
         while (s != null) {
             if (s.split(" ")[0].equals(username)) {
-                return "redirect:/register";
+                return ResponseEntity.ok().body(new Message("USERNAME ALREADY EXISTS"));
             }
             s = bufferedReader.readLine();
         }
 
         BufferedWriter writer = new BufferedWriter(new FileWriter("./users.txt", true));
         writer.write('\n' + username + " " + password);
-        return "redirect:/login";
+        return ResponseEntity.ok().body(new Message("OK"));
     }
 }

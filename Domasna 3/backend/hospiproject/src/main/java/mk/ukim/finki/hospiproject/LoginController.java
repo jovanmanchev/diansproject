@@ -15,9 +15,7 @@ public class LoginController {
     @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping
     public ResponseEntity<Message> login(@RequestParam String username, @RequestParam String password) throws IOException {
-        System.out.println("DA");
-        System.out.println(username);
-        System.out.println(password);
+
         FileReader fileReader = new FileReader("./users.txt");
         BufferedReader bufferedReader = new BufferedReader(fileReader);
         String s = bufferedReader.readLine();

@@ -22,11 +22,17 @@ export class LoginComponent {
   this.http.post(`http://localhost:8080/login?username=${this.username}&password=${this.password}`,{username:this.username,password:this.password}).subscribe((data)=>{
    this.response = data;
 
-  if(this.response.message == 'OK')
+  if(this.response.message == 'OK'){
     this.router.navigate(['/main'])
+  }
+
+  if(this.response.message == 'NOT FOUND'){
+    alert(this.response.message)
+    this.router.navigate(['/login'])
+  }
   
-  if(this.response.message == 'NOT FOUND')
-  this.router.navigate(['/login'])
+  
+    
 
   })
   }
