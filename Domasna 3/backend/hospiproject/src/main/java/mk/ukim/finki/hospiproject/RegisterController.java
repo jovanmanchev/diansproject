@@ -37,6 +37,8 @@ public class RegisterController {
 
         BufferedWriter writer = new BufferedWriter(new FileWriter("./users.txt", true));
         writer.write('\n' + username + " " + password);
+        writer.flush();
+        writer.close();
         return ResponseEntity.ok().body(new Message("OK"));
     }
 }
