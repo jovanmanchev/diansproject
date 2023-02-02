@@ -1,4 +1,4 @@
-package mk.ukim.finki.hospiproject;
+package mk.ukim.finki.hospiproject.controller;
 
 import mk.ukim.finki.hospiproject.repository.dataholder.Message;
 import org.springframework.http.ResponseEntity;

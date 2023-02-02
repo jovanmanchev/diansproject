@@ -1,4 +1,4 @@
-package mk.ukim.finki.hospiproject;
+package mk.ukim.finki.hospiproject.controller;
 
 import com.maxmind.geoip2.DatabaseReader;
 import com.maxmind.geoip2.exception.GeoIp2Exception;
@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import mk.ukim.finki.hospiproject.repository.dataholder.DataReader;
 import mk.ukim.finki.hospiproject.repository.dataholder.GeoIP;
 import mk.ukim.finki.hospiproject.repository.dataholder.Hospital;
+import mk.ukim.finki.hospiproject.service.UserLocationService;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -29,6 +30,13 @@ import java.util.List;
 
 @RestController
 public class HospitalController {
+
+    private final UserLocationService userLocationService;
+
+    public HospitalController(UserLocationService userLocationService) {
+        this.userLocationService = userLocationService;
+    }
+
     @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/hospitals")
     public ResponseEntity<List<Hospital>> getHospitals(){
@@ -39,27 +47,9 @@ public class HospitalController {
     @GetMapping("/user/location")
     public ResponseEntity<GeoIP> getUserLocation(@RequestParam(value="ipAddress") Object ipAddress) throws IOException {
 
-        String dbLocation = "./GeoLite2-City.mmdb";
-        File locationsDatabase = new File(dbLocation);
-        DatabaseReader dbReader = new DatabaseReader.Builder(locationsDatabase)
-                .build();
-        InetAddress ip = null;
-        CityResponse cityResponse = null;
-        try{
-            ip = InetAddress.getByName((String)ipAddress);
-            cityResponse = dbReader.city(ip);
-        }catch (GeoIp2Exception e){
-            return ResponseEntity.ok()
-                    .body(new GeoIP("41.6058", "21.7453"));
-        }
-
-
-
-        String latitude = cityResponse.getLocation().getLatitude().toString();
-        String longitude = cityResponse.getLocation().getLongitude().toString();
 
         return ResponseEntity.ok()
-                .body(new GeoIP(latitude, longitude));
+                .body(this.userLocationService.getUserLocation((String)ipAddress));
 
     }
 }
