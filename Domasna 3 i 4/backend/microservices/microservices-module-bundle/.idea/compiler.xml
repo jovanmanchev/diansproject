@@ -8,11 +8,13 @@
         <outputRelativeToContentRoot value="true" />
         <module name="users-service" />
         <module name="hospitals-service" />
+        <module name="discoveryserver" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="discoveryserver" options="-parameters" />
       <module name="hospitals-service" options="-parameters" />
       <module name="microservices-module-bundle" options="" />
       <module name="users-service" options="-parameters" />
