@@ -22,7 +22,7 @@ public class LoginController {
     @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping
     public ResponseEntity<Message> login(@RequestParam String username, @RequestParam String password) throws IOException {
-        
+
         return ResponseEntity.ok().body(new Message(this.loginUserService.loginUser(username, password)));
     }
 }
