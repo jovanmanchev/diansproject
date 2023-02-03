@@ -19,7 +19,7 @@ export class LoginComponent {
   onSubmit(data : any){
   this.username = data.form.value.username;
   this.password = data.form.value.password;
-  this.http.post(`http://localhost:8080/login?username=${this.username}&password=${this.password}`,{username:this.username,password:this.password}).subscribe((data)=>{
+  this.http.post(`http://localhost:9000/users/login?username=${this.username}&password=${this.password}`,{username:this.username,password:this.password}).subscribe((data)=>{
    this.response = data;
 
   if(this.response.message == 'OK'){

@@ -29,7 +29,7 @@ export class MapComponent implements OnInit {
     this.http.get("https://api.ipify.org?format=json").subscribe((data) => {
       this.ipAdress = data;
       console.log(this.ipAdress.ip)
-      this.http.get(`http://localhost:8080/user/location?ipAddress=${this.ipAdress.ip}`).subscribe((data) => {
+      this.http.get(`http://localhost:9000/hospital/user/location?ipAddress=${this.ipAdress.ip}`).subscribe((data) => {
         let key1 = 'latitude'
         let key2 = 'longitude'
        
@@ -43,7 +43,7 @@ export class MapComponent implements OnInit {
   }
 
   public getMethod() {
-    this.http.get('http://localhost:8080/hospitals').subscribe((data) => {
+    this.http.get('http://localhost:9000/hospital/hospitals').subscribe((data) => {
       
       this.dataObj = data;
       let counter = 0

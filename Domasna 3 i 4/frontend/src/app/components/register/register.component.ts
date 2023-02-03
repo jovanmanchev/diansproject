@@ -24,7 +24,7 @@ export class RegisterComponent {
     this.password = data.form.value.password;
     this.confirmPassword = data.form.value.confirmPassword;
 
-    this.http.post(`http://localhost:8080/register?username=${this.username}&password=${this.password}&confirmPassword=${this.confirmPassword}`,{username:this.username,password:this.password,confirmPassword: this.confirmPassword}).subscribe((data)=>{
+    this.http.post(`http://localhost:9000/users/register?username=${this.username}&password=${this.password}&confirmPassword=${this.confirmPassword}`,{username:this.username,password:this.password,confirmPassword: this.confirmPassword}).subscribe((data)=>{
     this.response = data;
 
     if(this.response.message == 'OK'){
