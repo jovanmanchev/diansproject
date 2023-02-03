@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.io.IOException;
 
 @Controller
-@RequestMapping("/register")
+@RequestMapping("/users/register")
 public class RegisterController {
 
     private final RegisterUserService registerUserService;

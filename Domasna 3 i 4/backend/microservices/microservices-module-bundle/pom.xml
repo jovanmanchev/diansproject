@@ -17,6 +17,7 @@
         <module>hospitals-service</module>
         <module>users-service</module>
         <module>discoveryserver</module>
+        <module>api-gateway</module>
     </modules>
 
     <properties>

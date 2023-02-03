@@ -27,13 +27,13 @@ public class HospitalController {
     }
 
     @CrossOrigin(origins = "http://localhost:4200")
-    @GetMapping("/hospitals")
+    @GetMapping("/hospital/hospitals")
     public ResponseEntity<List<Hospital>> getHospitals(){
         return ResponseEntity.ok()
                 .body(DataReader.hospitalList);
     }
     @CrossOrigin(origins = "http://localhost:4200")
-    @GetMapping("/user/location")
+    @GetMapping("/hospital/user/location")
     public ResponseEntity<GeoIP> getUserLocation(@RequestParam(value="ipAddress") Object ipAddress) throws IOException {
 
 

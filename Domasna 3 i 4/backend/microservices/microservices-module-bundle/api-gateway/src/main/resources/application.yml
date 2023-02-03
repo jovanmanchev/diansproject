@@ -1,0 +1,15 @@
+server:
+  port: 9000
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: hospitalMicroservice
+          uri: http://localhost:8081/
+          predicates:
+            - Path=/hospital/**
+
+        - id: usersMicroservice
+          uri: http://localhost:8082/
+          predicates:
+            - Path=/users/**
