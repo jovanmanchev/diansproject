@@ -14,7 +14,7 @@ public class DataReader {
 
     public static List<Hospital> hospitalList;
     public DataReader(){
-        file = new File(FILE_PATH);
+        file = new File("./hospitals.txt");
         hospitalList = new ArrayList<>();
     }
     public void extractDataFromFile() throws FileNotFoundException, IOException {
@@ -30,7 +30,7 @@ public class DataReader {
 
 
         jsonObjects = this.hospitalList.stream().map(hospital -> {
-            JSONObject jsonObject = new JSONObject();
+                        JSONObject jsonObject = new JSONObject();
             jsonObject.put("id", hospital.getHospitalId());
             jsonObject.put("lon", hospital.getLon());
             jsonObject.put("lat", hospital.getLat());

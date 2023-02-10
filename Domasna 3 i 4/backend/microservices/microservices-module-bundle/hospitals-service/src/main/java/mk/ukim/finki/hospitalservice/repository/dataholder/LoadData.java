@@ -20,6 +20,5 @@ public class LoadData {
         DataReader dataReader = new DataReader();
         dataReader.extractDataFromFile();
         dataReader.generateJSONData();
-
     }
 }
