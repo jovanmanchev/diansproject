@@ -1,0 +1,59 @@
+version: '3.7'
+
+services:
+  discovery-server:
+    image: milepelivanov/discoveryserver:latest
+    container_name: discovery-server
+    pull_policy: always
+    ports:
+      - "8761:8761"
+    expose:
+      - "8761"
+
+
+  api-gateway:
+    image: milepelivanov/api-gateway:latest
+    container_name: api-gateway
+    pull_policy: always
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    ports:
+      - "9000:8761"
+    expose:
+      - "9000"
+    depends_on:
+      - discovery-server
+
+  frontend:
+    build: ./../../../frontend
+    ports:
+      - "3000:3000"
+  hospitals-service:
+    image: milepelivanov/hospitals-service:latest
+    container_name: hospitals-service
+    pull_policy: always
+    volumes:
+      - type: bind
+        source: C:\Users\milep\GitRepos\diansproject\Domasna 3 i 4\backend\microservices\microservices-module-bundle\hospitals.txt
+        target: /hospitals.txt
+      - type: bind
+        source: C:\Users\milep\GitRepos\diansproject\Domasna 3 i 4\backend\microservices\microservices-module-bundle\GeoLite2-City.mmdb
+        target: /GeoLite2-City.mmdb
+
+    depends_on:
+      - api-gateway
+      - discovery-server
+
+
+  users-service:
+    image: milepelivanov/users-service
+    container_name: users-service
+    pull_policy: always
+    volumes:
+      - type: bind
+        source: C:\Users\milep\GitRepos\diansproject\Domasna 3 i 4\backend\microservices\microservices-module-bundle\users.txt
+        target: /users.txt
+
+    depends_on:
+      - api-gateway
+      - discovery-server
